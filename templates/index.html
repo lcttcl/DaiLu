@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    主页标题
+{% endblock %}
+
+{% load static %}
+{% block header_extends %}
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section id="jumbotron">
+        <div class="jumbotron">
+            <div class="container">
+                <h1>一带一路 Belt&Road</h1>
+                <p>
+                    政策沟通 设施联通 贸易畅通 资金融通 民心相通
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="https://www.yidaiyilu.gov.cn/" role="button"
+                       target="_blank">
+                        中国一带一路网
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        媒体列表{% block media_list_title %}{% endblock %}
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group half">
+                            {% for medium in media %}
+                                <li class="list-group-item">
+                                    <span class="badge">14</span>
+                                    <img data-url="{{ MEDIA_URL }}{{ medium.logo_image }}" class="img-responsive"
+                                         alt="Responsive image"/>
+                                    <a href="{% url 'index' %}">{{ medium.chn_name }}</a>
+                                </li>
+                            {% empty %}
+                                <li>暂无媒体</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="hidden-xs col-sm-4 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        国家
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            {% for country in countries %}
+                                <a href="{% url 'index' %}"
+                                   class="list-group-item">
+                                    {{ country.name }}
+                                </a>
+                            {% empty %}
+                                <li>
+                                    暂无国家
+                                </li>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block nav_home_active %}
+    active
+{% endblock %}
+

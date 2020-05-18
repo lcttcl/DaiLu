@@ -1,0 +1,21 @@
+.jumbotron {
+    background: url(images/bj.jpg) top center fixed;
+    background-size: cover;
+    color: white;
+    padding-bottom: 18em;
+    padding-top: 18em;
+
+}
+
+.jumbotron h1 {
+    margin-bottom: 3rem;
+}
+
+.jumbotron p {
+    margin-bottom: 3rem;
+    font-weight: bold;
+}
+
+.half li {
+    width: 50%;
+}
