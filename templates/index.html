@@ -40,7 +40,7 @@
                             {% for medium in media %}
                                 <li class="list-group-item">
                                     <span class="badge">14</span>
-                                    <img data-url="{{ MEDIA_URL }}{{ medium.logo_image }}" class="img-responsive"
+                                    <img src="{{ MEDIA_URL }}{{ medium.logo_image }}" class="img-responsive"
                                          alt="Responsive image"/>
                                     <a href="{% url 'index' %}">{{ medium.chn_name }}</a>
                                 </li>
