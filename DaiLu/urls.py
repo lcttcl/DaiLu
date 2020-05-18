@@ -30,6 +30,7 @@ urlpatterns = [
     path('mediums/', include(('mediums.urls', 'mediums'), namespace='mediums')),
     path('operations/', include(('operations.urls', 'operations'), namespace='operations')),
     path('', media_list, name='index'),
+
     re_path(r'^media/(?P<path>.*)$', serve, {
         'document_root': settings.MEDIA_ROOT,
     }),
