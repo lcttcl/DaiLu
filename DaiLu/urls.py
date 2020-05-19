@@ -24,7 +24,7 @@ from mediums.views import media_list
 import xadmin
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('xadmin/', xadmin.site.urls),
     path('users/', include(('users.urls', 'users'), namespace='users')),
     path('mediums/', include(('mediums.urls', 'mediums'), namespace='mediums')),

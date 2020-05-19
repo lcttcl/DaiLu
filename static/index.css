@@ -2,8 +2,8 @@
     background: url(images/bj.jpg) top center fixed;
     background-size: cover;
     color: white;
-    padding-bottom: 18em;
-    padding-top: 18em;
+    padding-bottom: 10em;
+    padding-top: 10em;
 
 }
 
@@ -18,4 +18,9 @@
 
 .half li {
     width: 50%;
+}
+
+.img-responsive{
+    width: 100px;
+    height: 50px;
 }
