@@ -1,5 +1,5 @@
 .jumbotron {
-    background: url(images/bj.jpg) top center fixed;
+    background: url(../images/bj.jpg) top center fixed;
     background-size: cover;
     color: white;
     padding-bottom: 10em;
@@ -20,7 +20,11 @@
     width: 50%;
 }
 
-.img-responsive{
+.img-responsive {
     width: 100px;
     height: 50px;
+}
+
+.lct-jumbotron {
+    margin-top: -20px;
 }

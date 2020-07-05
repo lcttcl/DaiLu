@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import world_map, medium_info
 
 urlpatterns = [
-
+    path('world_map/', world_map, name='world_map'),
+    path('medium_info/<int:medium_pk>', medium_info, name='medium_info'),
 ]

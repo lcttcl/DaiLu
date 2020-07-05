@@ -1,0 +1,17 @@
+.page-header {
+    background-color: #e7ffff;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.div-inline {
+    float: left;
+}
+
+.info-subtitle {
+    width: 6em;
+    margin-right: 30px;
+    text-align: right;
+}
+
+

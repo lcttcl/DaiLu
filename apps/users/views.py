@@ -41,3 +41,11 @@ def user_register(request):
             return render(request, 'register.html', {
                 'user_register_form': user_register_form,
             })
+
+def user_login(request):
+    if request.method == 'GET':
+        return render(request, 'login.html')
+
+    else:
+        pass
+

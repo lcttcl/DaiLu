@@ -6,11 +6,11 @@
 
 {% load static %}
 {% block header_extends %}
-    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 
 {% block content %}
-    <section id="jumbotron">
+    <section id="jumbotron" class="lct-jumbotron">
         <div class="jumbotron">
             <div class="container">
                 <h1>一带一路 Belt&Road</h1>
@@ -38,12 +38,12 @@
                     <div class="panel-body">
                         <ul class="list-group half">
                             {% for medium in media %}
-                                <li class="list-group-item">
+                                <li class="list-group-item medium">
                                     <span class="badge">14</span>
                                     <img src="{{ MEDIA_URL }}{{ medium.logo_image }}" class="img-responsive"
                                          alt="Responsive image"/>
                                     <br>
-                                    <a href="{% url 'index' %}">{{ medium.chn_name }}</a>
+                                    <a href="{% url 'mediums:medium_info' medium.pk %}">{{ medium.chn_name }}</a>
                                 </li>
                             {% empty %}
                                 <li>暂无媒体</li>
