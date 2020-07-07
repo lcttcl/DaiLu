@@ -2,6 +2,8 @@ import time
 
 from django.shortcuts import render, get_object_or_404
 from .models import MediumInfo, CategoryInfo, CountryInfo
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+import csv
 
 
 # Create your views here.
@@ -20,15 +22,27 @@ def media_list(request, country_pk=0):
 
 
 def country_list(request):
-    countries = CountryInfo.objects.all()
-    context = {
-        'countries': countries,
-    }
-    return render(request, 'countries_list.html', context)
+    pass
 
 
 def world_map(request):
-    return render(request, 'world_map.html')
+    countries = CountryInfo.objects.all()
+    # 分页功能
+    page_num = request.GET.get('page_num')
+    pa = Paginator(countries, 2)
+    try:
+        pages = pa.page(page_num)
+    except PageNotAnInteger:
+        pages = pa.page(1)
+    except EmptyPage:
+        pages = pa.page(pa.num_pages)
+
+    context = {
+        'countries': countries,
+        'pages': pages,
+        'pa': pa,
+    }
+    return render(request, 'world_map.html', context)
 
 
 def medium_info(request, medium_pk):
