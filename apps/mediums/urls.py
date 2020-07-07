@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import world_map, medium_info
+from .views import world_map, medium_info, media_list
 
 urlpatterns = [
     path('world_map/', world_map, name='world_map'),
+    path('media_list/<int:country_pk>', media_list, name='media_list_2'),
     path('medium_info/<int:medium_pk>', medium_info, name='medium_info'),
 ]

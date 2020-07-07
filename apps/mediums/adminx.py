@@ -26,7 +26,7 @@ class CategoryInfoXadmin(object):
 
 class MediumInfoXadmin(object):
     list_display = ['logo_image', 'chn_name', 'en_name', 'url', 'desc', 'detail', 'love_num', 'click_num',
-                    'country_info', 'language_info', 'category_info', 'add_time']
+                    'country_info', 'language_info', 'category_info', 'add_time', 'update_time']
 
 
 xadmin.site.register(CountryInfo, CountryInfoXadmin)

@@ -27,7 +27,7 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path('xadmin/', xadmin.site.urls),
     path('users/', include(('users.urls', 'users'), namespace='users')),
-    path('mediums/', include(('mediums.urls', 'mediums'), namespace='mediums')),
+    path('media/', include(('mediums.urls', 'mediums'), namespace='mediums')),
     path('operations/', include(('operations.urls', 'operations'), namespace='operations')),
     path('', media_list, name='index'),
 

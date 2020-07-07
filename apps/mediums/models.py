@@ -55,6 +55,7 @@ class MediumInfo(models.Model):
     language_info = models.ForeignKey(LanguageInfo, null=True, on_delete=models.DO_NOTHING, verbose_name="语种")
     category_info = models.ForeignKey(CategoryInfo, null=True, on_delete=models.DO_NOTHING, verbose_name="所属类别")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
+    update_time = models.DateTimeField(auto_now=True, verbose_name="更新时间")
     is_deleted = models.BooleanField(default=False, verbose_name="删除状态")
 
     def __str__(self):

@@ -16,6 +16,13 @@
                 <div class="page-header">
                     <h1>{{ medium.chn_name }} <small>{{ medium.en_name }}</small></h1>
                 </div>
+                <div>
+                    <ol class="breadcrumb">
+                        <li><a href="{% url 'index' %}">首页</a></li>
+                        <li><a href="{% url 'mediums:world_map' %}">媒体列表</a></li>
+                        <li class="active">媒体详情</li>
+                    </ol>
+                </div>
                 <div class="col-xs-12 col-sm-8 col-md-9">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -30,19 +37,21 @@
                             <br><br>
                             <div class="info-item">
                                 <div class="div-inline info-subtitle">媒体分类</div>
-                                <div class="div-inline"><a href="{{ medium.url }}" target="_blank">{{ medium.category_info }}</a>
+                                <div class="div-inline"><a href="{{ medium.url }}"
+                                                           target="_blank">{{ medium.category_info }}</a>
                                 </div>
                             </div>
                             <br><br>
                             <div class="info-item">
                                 <div class="div-inline info-subtitle">主要语种</div>
-                                <div class="div-inline"><a href="{{ medium.url }}" target="_blank">{{ medium.language_info }}</a>
+                                <div class="div-inline"><a href="{{ medium.url }}"
+                                                           target="_blank">{{ medium.language_info }}</a>
                                 </div>
                             </div>
 
                         </div>
                         <div class="panel-footer">
-                            <span>整理于 {{ medium.add_time }}，仅供参考</span>
+                            <span>整理于 {{ medium.add_time }}，更新于 {{ medium.update_time }}，仅供参考</span>
                         </div>
                     </div>
                 </div>
