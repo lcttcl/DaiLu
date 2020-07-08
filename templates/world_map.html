@@ -1971,60 +1971,121 @@
     </section>
 
     <section>
-        <ul>
-            {% for country in pages %}
-                <li>
-                    <a href="{% url 'index' %}" target="_blank" title="{{ country.name }}">
-                        {{ country.name }}
-                    </a>
-                </li>
-            {% empty %}
-                <li>
-                    暂无国家
-                </li>
-            {% endfor %}
-        </ul>
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-                {% if pages.has_previous %}
-                    <li>
-                        <a href="?page_num={{ pages.previous_page_number }}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                {% else %}
-                    <li class="disabled">
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                {% endif %}
 
-                {% for num in pa.page_range %}
-                    {% if pages.number == num %}
-                        <li class="active"><a href="?page_num={{ num }}">{{ num }}</a></li>
-                    {% else %}
-                        <li><a href="?page_num={{ num }}">{{ num }}</a></li>
-                    {% endif %}
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-9">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            国家列表
+                        </div>
+                        <div class="panel-body">
+                            <div class="continent-bar">
+                                <a href="{% url 'mediums:world_map' %}">
+                                    <span class="label label-danger {% if continent == '' %}active{% endif %}">所有国家</span></a>
+                                <a href="?continent=Asia">
+                                    <span class="label label-default {% if continent == "Asia" %}active{% endif %}">亚洲</span></a>
+                                <a href="?continent=Africa">
+                                    <span class="label label-primary {% if continent == "Africa" %}active{% endif %}">非洲</span></a>
+                                <a href="?continent=Europe">
+                                    <span class="label label-success {% if continent == "Europe" %}active{% endif %}">欧洲</span></a>
+                                <a href="?continent=Oceania">
+                                    <span class="label label-info {% if continent == "Oceania" %}active{% endif %}">大洋洲</span></a>
+                                <a href="?continent=America">
+                                    <span class="label label-warning {% if continent == "America" %}active{% endif %}">美洲</span></a>
+                            </div>
+                            <hr>
+                            <ul class="countries">
+                                {% for country in countries %}
+                                    <li class="country-item">
+                                        <a href="?continent={{ continent }}&country_id={{ country.pk }}"
+                                           title="{{ country.name }}"
+                                           class={% if country.pk|stringformat:"i" == country_id %}"active"{% endif %}>{{ country.name }}</a>
+                                    </li>
+                                {% empty %}
+                                    <li>
+                                        暂无国家
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            <hr>
+                            {#                            <nav aria-label="Page navigation">#}
+                            {#                                <ul class="pagination">#}
+                            {#                                    {% if pages.has_previous %}#}
+                            {#                                        <li>#}
+                            {#                                            <a href="?page_num={{ pages.previous_page_number }}&continent={{ continent }}" aria-label="Previous">#}
+                            {#                                                <span aria-hidden="true">&laquo;</span>#}
+                            {#                                            </a>#}
+                            {#                                        </li>#}
+                            {#                                    {% else %}#}
+                            {#                                        <li class="disabled">#}
+                            {#                                            <a href="#" aria-label="Previous">#}
+                            {#                                                <span aria-hidden="true">&laquo;</span>#}
+                            {#                                            </a>#}
+                            {#                                        </li>#}
+                            {#                                    {% endif %}#}
+                            {##}
+                            {#                                    {% for num in pa.page_range %}#}
+                            {##}
+                            {#                                        <li {% if pages.number == num %}class="active"{% endif %}>#}
+                            {#                                            <a href="?page_num={{ num }}&continent={{ continent }}">{{ num }}</a>#}
+                            {#                                        </li>#}
+                            {#                                    {% endfor %}#}
+                            {##}
+                            {#                                    {% if pages.has_next %}#}
+                            {#                                        <li>#}
+                            {#                                            <a href="?page_num={{ pages.next_page_number }}&continent={{ continent }}" aria-label="Next">#}
+                            {#                                                <span aria-hidden="true">&raquo;</span>#}
+                            {#                                            </a>#}
+                            {#                                        </li>#}
+                            {#                                    {% else %}#}
+                            {#                                        <li class="disabled">#}
+                            {#                                            <a href="#" aria-label="Next">#}
+                            {#                                                <span aria-hidden="true">&raquo;</span>#}
+                            {#                                            </a>#}
+                            {#                                        </li>#}
+                            {#                                    {% endif %}#}
+                            {##}
+                            {#                                </ul>#}
+                            {#                            </nav>#}
 
-                {% endfor %}
+                            <ul class="list-group half media">
+                                {% for medium in media %}
+                                    <li class="list-group-item medium ">
+                                        <span class="badge">14</span>
+                                        <img src="{{ MEDIA_URL }}{{ medium.logo_image }}" class="img-responsive"
+                                             alt="Responsive image"/>
+                                        <br>
+                                        <a href="{% url 'mediums:medium_info' medium.pk %}">{{ medium.chn_name }}</a>
+                                    </li>
+                                {% empty %}
+                                    <li>暂无媒体</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
 
-                {% if pages.has_next %}
-                    <li>
-                        <a href="?page_num={{ pages.next_page_number }}" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                {% else %}
-                    <li class="disabled">
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                {% endif %}
 
-            </ul>
-        </nav>
+                        <div class="panel-footer">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden-xs col-sm-4 col-md-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            评价栏
+                        </div>
+                        <div class="panel-body">
+
+                        </div>
+                        <div class="panel-footer">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
 {% endblock %}
 
